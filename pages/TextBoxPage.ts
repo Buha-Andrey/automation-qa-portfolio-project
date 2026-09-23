@@ -4,12 +4,12 @@ import { LeftNavAccordionComponent } from "../components/LeftNavAccordionCompone
 
 class TextBoxPage {
   textBox: TextBoxComponent;
-  LeftNavAccordion: LeftNavAccordionComponent;
+  leftNavAccordion: LeftNavAccordionComponent;
 
   constructor(private page: Page) {
     this.page = page;
     this.textBox = new TextBoxComponent(this.page);
-    this.LeftNavAccordion = new LeftNavAccordionComponent(this.page);
+    this.leftNavAccordion = new LeftNavAccordionComponent(this.page);
   }
 
   async open() {
@@ -17,3 +17,4 @@ class TextBoxPage {
   }
 }
 export { TextBoxPage };
+
