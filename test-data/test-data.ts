@@ -1,4 +1,10 @@
-export const  roleTestData = [
+type RoleTestData = {
+  role: string;
+  description: string;
+  expectedResponseRoleText: string;
+};
+
+export const roleTestData: RoleTestData[] = [
   {
     role: "tester",
     description:

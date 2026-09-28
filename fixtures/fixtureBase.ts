@@ -1,5 +1,4 @@
 import { test as base, ConsoleMessage } from "@playwright/test";
-import { MultipleElementsPage } from "../pages/MultipleElementsPage";
 
 export const test = base.extend({
   page: async ({ page }, use) => {
