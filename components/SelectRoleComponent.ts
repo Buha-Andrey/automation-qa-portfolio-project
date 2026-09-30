@@ -6,10 +6,7 @@ class SelectRoleComponent {
   }
 
   private getRoleRadioButton = (role: string) => this.page.locator(`#${role}`);
-  // private getManagerRadioButton = () => this.page.locator("#anager");
-  // private getProgrammerRadioButton = () => this.page.locator("#programmer");
-  // private getTesterRadioButton = () => this.page.locator("#tester");
-  // private getAllRadioButton = () => this.page.locator("#all");
+
   getSubmitButton = () => this.page.locator("#submitBtn");
   getRoleDescription = () => this.page.locator(".role-description");
   getSpinner = () => this.page.locator("#spinner");

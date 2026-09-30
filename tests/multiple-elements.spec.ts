@@ -1,5 +1,4 @@
 import { expect } from "@playwright/test";
-import { MultipleElementsPage } from "../pages/MultipleElementsPage";
 import { roleTestData } from "../test-data/test-data";
 import { test } from "../fixtures/fixturePages";
 
