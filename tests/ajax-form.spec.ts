@@ -1,7 +1,6 @@
 import { expect } from "@playwright/test";
 import { ajaxCategory } from "../test-data/test-data";
 import { test } from "../fixtures/fixturePages";
-import { AjaxFormPage } from "../pages/AjaxFormPage";
 
 // let page: Page;
 // let multipleElementsPage: MultipleElementsPage;
