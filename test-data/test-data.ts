@@ -197,3 +197,44 @@ export const invalidSecondInputCases: FormCase[] = [
   { first: "10", second: "1e5", note: "exponent = 100000" },
   { first: "10", second: "", note: "empty" },
 ];
+
+export const alert = {
+  explanation: "You triggered and handled the alert dialog",
+};
+
+export const confirm = {
+  explanationTrue: "You clicked OK, confirm returned true.",
+  explanationFalse: "You clicked Cancel, confirm returned false.",
+  returnTrue: "true",
+  returnFalse: "false",
+};
+
+export const promptTrue = [
+  {
+    thePrompt: "Hello",
+    explanationTrue: "You clicked OK. 'prompt' returned Hello",
+  },
+  {
+    thePrompt: "Bye",
+    explanationTrue: "You clicked OK. 'prompt' returned Bye",
+  },
+  {
+    thePrompt: "NewYear2027",
+    explanationTrue: "You clicked OK. 'prompt' returned NewYear2027",
+  },
+];
+
+export const promptFalse = {
+  explanationFalse: "You clicked Cancel. 'prompt' returned null",
+};
+
+export const dialogMessage = {
+  alert: "I am an alert box!",
+  confirm: "I am a confirm alert",
+  prompt: "I prompt you",
+};
+
+export const promptEdgeCases = {
+  input: "<b>x</b>",
+  explanation: "You clicked OK. 'prompt' returned <b>x</b>",
+};
