@@ -3,12 +3,18 @@ import { MultipleElementsPage } from "../pages/MultipleElementsPage";
 import { AjaxFormPage } from "../pages/AjaxFormPage";
 import { JavascriptFormPage } from "../pages/JavascriptFormPage";
 import { AlertsJavascriptPage } from "../pages/AlertsJavascriptPage";
+import { ExternalContentPage } from "../pages/ExternalContentPage";
+import { ExternalSitePage } from "../pages/ExternalSitePage";
+import { iFrameExamplesPage } from "../pages/iFrameExamplesPage";
 
 type Pages = {
   multipleElementsPage: MultipleElementsPage;
   ajaxFormPage: AjaxFormPage;
   javascriptFormPage: JavascriptFormPage;
   alertsJavascriptPage: AlertsJavascriptPage;
+  externalContentPage: ExternalContentPage;
+  externalSitePage: ExternalSitePage;
+  iframeExamplesPage: iFrameExamplesPage;
 };
 
 export const test = base.extend<Pages>({
@@ -30,5 +36,20 @@ export const test = base.extend<Pages>({
   alertsJavascriptPage: ({ page }, use) => {
     const alertsJavascriptPage = new AlertsJavascriptPage(page);
     use(alertsJavascriptPage);
+  },
+
+  externalContentPage: ({ page }, use) => {
+    const externalContentPage = new ExternalContentPage(page);
+    use(externalContentPage);
+  },
+
+  externalSitePage: ({ page }, use) => {
+    const externalSitePage = new ExternalSitePage(page);
+    use(externalSitePage);
+  },
+
+  iframeExamplesPage: ({ page }, use) => {
+    const iframeExamplesPage = new iFrameExamplesPage(page);
+    use(iframeExamplesPage);
   },
 });
