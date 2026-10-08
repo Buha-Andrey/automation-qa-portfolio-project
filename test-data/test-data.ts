@@ -363,3 +363,8 @@ export const iFrameIncrementNumber = {
   positiveAmount: "100",
   negativeAmount: "-100",
 };
+
+export const UploadData = {
+  fileName: "test.txt",
+  fileBuffer: 1000,
+};

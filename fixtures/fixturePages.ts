@@ -6,6 +6,8 @@ import { AlertsJavascriptPage } from "../pages/AlertsJavascriptPage";
 import { ExternalContentPage } from "../pages/ExternalContentPage";
 import { ExternalSitePage } from "../pages/ExternalSitePage";
 import { iFrameExamplesPage } from "../pages/iFrameExamplesPage";
+import { FileUploadPage } from "../pages/FileUploadPage";
+import { FileProcessorPage } from "../pages/FileProcessorPage";
 
 type Pages = {
   multipleElementsPage: MultipleElementsPage;
@@ -15,6 +17,8 @@ type Pages = {
   externalContentPage: ExternalContentPage;
   externalSitePage: ExternalSitePage;
   iframeExamplesPage: iFrameExamplesPage;
+  fileUploadPage: FileUploadPage;
+  fileProcessorPage: FileProcessorPage;
 };
 
 export const test = base.extend<Pages>({
@@ -51,5 +55,15 @@ export const test = base.extend<Pages>({
   iframeExamplesPage: ({ page }, use) => {
     const iframeExamplesPage = new iFrameExamplesPage(page);
     use(iframeExamplesPage);
+  },
+
+  fileUploadPage: ({ page }, use) => {
+    const fileUploadPage = new FileUploadPage(page);
+    use(fileUploadPage);
+  },
+  
+  fileProcessorPage: ({ page }, use) => {
+    const fileProcessorPage = new FileProcessorPage(page);
+    use(fileProcessorPage);
   },
 });
