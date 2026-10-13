@@ -8,6 +8,7 @@ import { ExternalSitePage } from "../pages/ExternalSitePage";
 import { iFrameExamplesPage } from "../pages/iFrameExamplesPage";
 import { FileUploadPage } from "../pages/FileUploadPage";
 import { FileProcessorPage } from "../pages/FileProcessorPage";
+import { DragAndDropPage } from "../pages/DragAndDropPage";
 
 type Pages = {
   multipleElementsPage: MultipleElementsPage;
@@ -19,6 +20,7 @@ type Pages = {
   iframeExamplesPage: iFrameExamplesPage;
   fileUploadPage: FileUploadPage;
   fileProcessorPage: FileProcessorPage;
+  dragAndDropPage: DragAndDropPage;
 };
 
 export const test = base.extend<Pages>({
@@ -61,9 +63,14 @@ export const test = base.extend<Pages>({
     const fileUploadPage = new FileUploadPage(page);
     use(fileUploadPage);
   },
-  
+
   fileProcessorPage: ({ page }, use) => {
     const fileProcessorPage = new FileProcessorPage(page);
     use(fileProcessorPage);
+  },
+
+  dragAndDropPage: ({ page }, use) => {
+    const dragAndDropPage = new DragAndDropPage(page);
+    use(dragAndDropPage);
   },
 });

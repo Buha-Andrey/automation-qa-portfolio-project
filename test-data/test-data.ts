@@ -368,3 +368,78 @@ export const UploadData = {
   fileName: "test.txt",
   fileBuffer: 1000,
 };
+
+export const dragAndDropData = {
+  dragging: [
+    {
+      description: "dragging 1st yellow square to 1st red square",
+      yellow: "1",
+      red: "1",
+      yellow_1Title: "Drag me",
+      yellow_2Title: "Drag me",
+      red_1Title: "Dropped!",
+      red_2Title: "No Drop here",
+    },
+    {
+      description: "dragging 2nd yellow square to 1st red square",
+      yellow: "2",
+      red: "1",
+      yellow_1Title: "Drag me",
+      yellow_2Title: "Drag me",
+      red_1Title: "Get Off Me!",
+      red_2Title: "No Drop here",
+    },
+    {
+      description: "dragging 1st yellow square to 2nd red square",
+      yellow: "1",
+      red: "2",
+      yellow_1Title: "Drag me",
+      yellow_2Title: "Drag me",
+      red_1Title: "Drop here",
+      red_2Title: "Dropped!",
+    },
+    {
+      description: "dragging 2nd yellow square to 2nd red square",
+      yellow: "2",
+      red: "2",
+      yellow_1Title: "Drag me",
+      yellow_2Title: "Drag me",
+      red_1Title: "Drop here",
+      red_2Title: "Dropped!",
+    },
+  ],
+
+  ctrl: {
+    // ctrl
+    yellow_1Title: "Drag me",
+    yellow_2Title: "Drag me",
+    red_1Title: "Drop Here",
+    red_2Title: "Drop Here",
+  },
+  ctrlB: {
+    // ctrl+B
+    yellow_1Title: "Bwa! Ha! Ha!",
+    yellow_2Title: "Drag me",
+    red_1Title: "Drop Here",
+    red_2Title: "Drop Here",
+  },
+  ctrlSpace: {
+    // ctrl+B
+    yellow_1Title: "Drag me",
+    yellow_2Title: "Drag me",
+    red_1Title: "Let GO!!!",
+    red_2Title: "Let GO!!!",
+  },
+
+  initial: {
+    yellow_1: "1",
+    yellow_2: "2",
+    red_1: "1",
+    red_2: "2",
+
+    yellow_1Title: "Drag me",
+    yellow_2Title: "Drag me",
+    red_1Title: "Drop here",
+    red_2Title: "No Drop here",
+  },
+};
