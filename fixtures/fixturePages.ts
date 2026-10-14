@@ -9,8 +9,10 @@ import { iFrameExamplesPage } from "../pages/iFrameExamplesPage";
 import { FileUploadPage } from "../pages/FileUploadPage";
 import { FileProcessorPage } from "../pages/FileProcessorPage";
 import { DragAndDropPage } from "../pages/DragAndDropPage";
+import { BasicAuthPage } from "../pages/BasicAuthPage";
+import { BasicAuthApi } from "../api/base-auth.client";
 
-type Pages = {
+type Fixtures = {
   multipleElementsPage: MultipleElementsPage;
   ajaxFormPage: AjaxFormPage;
   javascriptFormPage: JavascriptFormPage;
@@ -21,9 +23,11 @@ type Pages = {
   fileUploadPage: FileUploadPage;
   fileProcessorPage: FileProcessorPage;
   dragAndDropPage: DragAndDropPage;
+  basicAuthPage: BasicAuthPage;
+  basicAuthApi: BasicAuthApi;
 };
 
-export const test = base.extend<Pages>({
+export const test = base.extend<Fixtures>({
   multipleElementsPage: ({ page }, use) => {
     const multipleElementsPage = new MultipleElementsPage(page);
     use(multipleElementsPage);
@@ -72,5 +76,14 @@ export const test = base.extend<Pages>({
   dragAndDropPage: ({ page }, use) => {
     const dragAndDropPage = new DragAndDropPage(page);
     use(dragAndDropPage);
+  },
+
+  basicAuthPage: ({ page }, use) => {
+    const basicAuthPage = new BasicAuthPage(page);
+    use(basicAuthPage);
+  },
+  basicAuthApi: ({ request }, use) => {
+    const basicAuthApi = new BasicAuthApi(request);
+    use(basicAuthApi);
   },
 });

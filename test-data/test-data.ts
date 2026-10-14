@@ -25,6 +25,11 @@ type IFrameListData = {
   item: string;
 };
 
+type BasicAuthInvalidCred = {
+  username: string;
+  password: string;
+};
+
 export const roleTestData: RoleTestData[] = [
   {
     role: "tester",
@@ -443,3 +448,32 @@ export const dragAndDropData = {
     red_2Title: "No Drop here",
   },
 };
+
+export const basicAuthInvalidCred: BasicAuthInvalidCred[] = [
+  {
+    username: "",
+
+    password: "",
+  },
+
+  {
+    username: "authorized",
+    password: "",
+  },
+
+  {
+    username: "",
+    password: "password001",
+  },
+
+  {
+    username: "authorized",
+
+    password: "wrongPassword",
+  },
+  {
+    username: "wrongUsername",
+
+    password: "password001",
+  },
+];
