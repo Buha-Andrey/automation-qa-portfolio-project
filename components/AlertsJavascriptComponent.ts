@@ -42,19 +42,19 @@ export class AlertsJavascriptComponent {
     await this.getShowPromptBoxButton().click();
   }
 
-  async triggerAlert(): Promise<Dialog> {
+  triggerAlert(): Promise<Dialog> {
     const dialogPromise = this.page.waitForEvent("dialog");
     this.clickShowAlertBoxButton();
     return dialogPromise;
   }
 
-  async triggerConfirm(): Promise<Dialog> {
+  triggerConfirm(): Promise<Dialog> {
     const dialogPromise = this.page.waitForEvent("dialog");
     this.clickShowConfirmBoxButton();
     return dialogPromise;
   }
 
-  async triggerPrompt(): Promise<Dialog> {
+  triggerPrompt(): Promise<Dialog> {
     const dialogPromise = this.page.waitForEvent("dialog");
     this.clickShowPromptBoxButton();
     return dialogPromise;
