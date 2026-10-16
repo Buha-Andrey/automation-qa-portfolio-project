@@ -1,4 +1,4 @@
-| ID-case | Test Case | Type | Priority | Spec File | Status |
+| idCase | Test Case | Type | Priority | Spec File | Status |
 |---|---|---|---|---|---|
 | TC-01 | should select category and show it as selected | UI | Medium | ajax-form.spec.ts | Automated |
 | TC-02 | should select language and show it as selected  | UI | Medium | ajax-form.spec.ts | Automated |
