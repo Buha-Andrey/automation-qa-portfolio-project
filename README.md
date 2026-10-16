@@ -48,3 +48,10 @@
 | TC-02 | should show "iFrame" as list title when page is opened | UI | Medium | iFrame-example.spec.ts | Automated |
 | TC-03 | should show total 100 after adding positive amount (100) with Add button | UI | High | iFrame-example.spec.ts | Automated |
 | TC-04 | should show total -100 after adding negative amount (-100) with Add button | UI | Medium | iFrame-example.spec.ts | Automated |
+|---|---|---|---|---|---|
+| TC-01 | should show success message after file is uploaded by clicking the drop zone | UI | Medium | file-upload.spec.ts | Automated |
+| TC-02 | should show success message after file is dropped onto the drop zone | UI | High | file-upload.spec.ts | Automated |
+| TC-03 | should show upload results after file is chosen with "Choose file", the form is filled and Upload is clicked | UI | High | file-upload.spec.ts | Automated |
+| TC-04 | should show upload results after file is set in the file input, the form is filled and Upload is clicked | UI | Medium | file-upload.spec.ts | Automated |
+| TC-05 | should send POST request after uploading file via "Choose file" button | API (network) | High | file-upload.spec.ts | Automated |
+| TC-06 | should send POST request when file is dropped onto the drop zone | API (network) | High | file-upload.spec.ts | Automated |
