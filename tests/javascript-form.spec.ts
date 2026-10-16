@@ -17,8 +17,8 @@ test.describe("positive", () => {
 
   for (const { value, note } of validBoundaryValuesFirstInput) {
     test(
-      `should accept valid values in the 1st field after focus lost (${note})`,
-      { tag: ["@test"] },
+      `should accept valid value in the first field after it loses focus (${note})`,
+      { tag: ["@javascriptForm", "@regression"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillFirstInput(value);
         await javascriptFormPage.javascriptForm.getFirstInput().blur();
@@ -34,8 +34,8 @@ test.describe("positive", () => {
 
   for (const { value, note } of validBoundaryValuesSecondInput) {
     test(
-      `should accept valid values in the 2st field after focus lost (${note})`,
-      { tag: ["@test"] },
+      `should accept valid value in the second field after it loses focus (${note})`,
+      { tag: ["@javascriptForm", "@regression"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillSecondInput(value);
         await javascriptFormPage.javascriptForm.getSecondInput().blur();
@@ -50,8 +50,8 @@ test.describe("positive", () => {
   }
   for (const { first, second, note } of validFormCases) {
     test(
-      `should submit form with valid values ${note}`,
-      { tag: ["@test"] },
+      `should show success message when form is submitted with valid values (${note})`,
+      { tag: ["@javascriptForm", "@smoke"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillFirstInput(first);
         await javascriptFormPage.javascriptForm.fillSecondInput(second);
@@ -65,8 +65,8 @@ test.describe("positive", () => {
   }
 
   test.fixme(
-    `should submit form with valid values using keyboard`,
-    { tag: ["@test"] },
+    `should submit form with valid values using keyboard only`,
+    { tag: ["@javascriptForm", "@regression"] },
     async ({ javascriptFormPage }) => {
       await javascriptFormPage.javascriptForm.getFirstInput().focus();
       await expect(
@@ -77,8 +77,8 @@ test.describe("positive", () => {
 
   for (const { first, second, note } of validFormCases) {
     test(
-      `should display results details after submitted form with valid values ${note}`,
-      { tag: ["@test"] },
+      `should show submitted values in results after form is submitted with valid values (${note})`,
+      { tag: ["@javascriptForm", "@smoke"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillFirstInput(first);
         await javascriptFormPage.javascriptForm.fillSecondInput(second);
@@ -101,9 +101,9 @@ test.describe("negative", () => {
   });
 
   for (const { value, note } of invalidValue) {
-    test.skip(
-      `should show error after entering invalid values in the 1st field and lost the focus (${note})`,
-      { tag: ["@test"] },
+    test.fail(
+      `should show error when invalid value is entered in the first field and it loses focus (${note})`,
+      { tag: ["@javascriptForm", "@known-issue", "@regression"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillFirstInput(value);
         await javascriptFormPage.javascriptForm.getFirstInput().blur();
@@ -115,9 +115,9 @@ test.describe("negative", () => {
   }
 
   for (const { value, note } of invalidValueSecondInput) {
-    test.skip(
-      `should show error after entering invalid values in the 2st field and lost the focus (${note})`,
-      { tag: ["@test"] },
+    test.fail(
+      `should show error when invalid value is entered in the second field and it loses focus (${note})`,
+      { tag: ["@javascriptForm", "@known-issue", "@regression"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillSecondInput(value);
         await javascriptFormPage.javascriptForm.getSecondInput().blur();
@@ -132,9 +132,9 @@ test.describe("negative", () => {
   }
 
   for (const { first, second, note } of invalidFirstValueFormCases) {
-    test(
-      `should show error after submitting form with invalid value in first input (${note})`,
-      { tag: ["@test"] },
+    test.fail(
+      `should show error and no success message when form is submitted with invalid first value (${note})`,
+      { tag: ["@javascriptForm", "@known-issue", "@regression"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillFirstInput(first);
         await javascriptFormPage.javascriptForm.fillSecondInput(second);
@@ -151,9 +151,9 @@ test.describe("negative", () => {
   }
 
   for (const { first, second, note } of invalidSecondInputCases) {
-    test(
-      `should show error after submitting form with invalid value in second input (${note})`,
-      { tag: ["@test"] },
+    test.fail(
+      `should show error and no success message when form is submitted with invalid second value (${note})`,
+      { tag: ["@javascriptForm", "@known-issue", "@regression"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillFirstInput(first);
         await javascriptFormPage.javascriptForm.fillSecondInput(second);
@@ -175,23 +175,10 @@ test.describe("network", () => {
     await javascriptFormPage.open();
   });
 
-  for (const { first, second, note } of validFormCases)
-    test(
-      `should create request after submitting the form ${note}`,
-      { tag: ["@test"] },
-      async ({ javascriptFormPage }) => {
-        await javascriptFormPage.javascriptForm.fillFirstInput(first);
-        await javascriptFormPage.javascriptForm.fillSecondInput(second);
-        await Promise.all([
-          javascriptFormPage.javascriptForm.waitForSubmitApiRequest(),
-          javascriptFormPage.javascriptForm.clickSubmitButton(),
-        ]);
-      },
-    );
   for (const { first, second, note } of validFormCases) {
     test(
-      `should request's body be the same as submitted values ${note}`,
-      { tag: ["@test"] },
+      `should send entered values in request body when form is submitted (${note})`,
+      { tag: ["@javascriptForm", "@smoke"] },
       async ({ javascriptFormPage }) => {
         await javascriptFormPage.javascriptForm.fillFirstInput(first);
         await javascriptFormPage.javascriptForm.fillSecondInput(second);

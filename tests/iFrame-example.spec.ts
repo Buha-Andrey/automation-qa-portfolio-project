@@ -8,14 +8,20 @@ test.describe("iFrame list", () => {
   });
   for (const { item, itemID } of iFrameListData) {
     test(
-      `should match all iFrame items is iFrame list with test data #${itemID}`,
-      { tag: ["@test"] },
+      `should show expected text for list item #${itemID} (${item})`,
+      { tag: ["@iFrame", "@regression"] },
       async ({ iframeExamplesPage }) => {
-        await expect(iframeExamplesPage.getListTitle()).toHaveText("iFrame");
         await expect(iframeExamplesPage.getListItem(itemID)).toHaveText(item);
       },
     );
   }
+  test(
+    `should show "iFrame" as list title when page is opened`,
+    { tag: ["@iFrame", "@regression"] },
+    async ({ iframeExamplesPage }) => {
+      await expect(iframeExamplesPage.getListTitle()).toHaveText("iFrame");
+    },
+  );
 });
 
 test.describe("iFrame Increment Number", () => {
@@ -23,8 +29,8 @@ test.describe("iFrame Increment Number", () => {
     await iframeExamplesPage.open();
   });
   test(
-    `should increment number with 100 `,
-    { tag: ["@test"] },
+    `should show total 100 after adding positive amount (100) with Add button`,
+    { tag: ["@iFrame", "@smoke"] },
     async ({ iframeExamplesPage }) => {
       await iframeExamplesPage.fillAmountInput(
         iFrameIncrementNumber.positiveAmount,
@@ -39,8 +45,8 @@ test.describe("iFrame Increment Number", () => {
   );
 
   test(
-    `should decrement number with 100 `,
-    { tag: ["@test"] },
+    `should show total -100 after adding negative amount (-100) with Add button`,
+    { tag: ["@iFrame", "@regression"] },
     async ({ iframeExamplesPage }) => {
       await iframeExamplesPage.fillAmountInput(
         iFrameIncrementNumber.negativeAmount,

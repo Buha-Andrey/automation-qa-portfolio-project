@@ -9,10 +9,10 @@ test.describe("positive", () => {
 
   for (const { option, site } of iFrameWebsites) {
     test(
-      `should select website ${site}`,
-      { tag: ["@test"] },
+      `should set iframe "src" to the selected website (${site})`,
+      { tag: ["@externalSite", "@regression"] },
       async ({ externalSitePage }) => {
-        externalSitePage.selectWebsite(option);
+        await externalSitePage.selectWebsite(option);
         await expect(externalSitePage.embeddedSite.iFrame).toHaveAttribute(
           "src",
           option,
@@ -23,8 +23,8 @@ test.describe("positive", () => {
 
   for (const { option, site, embeddable } of iFrameWebsites) {
     test(
-      `should load iFrame with selected website ${option}`,
-      { tag: ["@test"] },
+      `should load selected website in iframe ${option}`,
+      { tag: ["@externalSite", "@smoke"] },
       async ({ externalSitePage }) => {
         const [response] = await Promise.all([
           externalSitePage.waitForIFrameResponse(site),

@@ -2,20 +2,16 @@ import { expect } from "@playwright/test";
 import { roleTestData } from "../test-data/test-data";
 import { test } from "../fixtures/fixturePages";
 
-// let page: Page;
-// let multipleElementsPage: MultipleElementsPage;
-
 test.describe("positive", () => {
- 
-  test.beforeEach(async ({multipleElementsPage }) => {
+  test.beforeEach(async ({ multipleElementsPage }) => {
     await multipleElementsPage.open();
   });
 
   for (const { role } of roleTestData) {
     test(
-      `should hide spinner and display success message on submit with the correct selected role ${role}`,
+      `should show success message and hide spinner after Submit with selected role (${role})`,
       { tag: ["@multiElements", "@smoke"] },
-      async ({multipleElementsPage }) => {
+      async ({ multipleElementsPage }) => {
         await multipleElementsPage.SelectRole.clickRoleRadioButton(role);
         await multipleElementsPage.SelectRole.clickSubmitButton();
         await multipleElementsPage.SelectRole.waitForSpinnerToBeHidden();
@@ -33,9 +29,9 @@ test.describe("positive", () => {
 
   for (const { role, description } of roleTestData) {
     test(
-      `should display correct description text on hover for  ${role} button`,
-      { tag: ["@multiElements"] },
-      async ({multipleElementsPage}) => {
+      `should show role description when hovering over role button (${role})`,
+      { tag: ["@multiElements", "@regression"] },
+      async ({ multipleElementsPage }) => {
         // const multipleElementsPage = new MultipleElementsPage(page);
         await multipleElementsPage.SelectRole.hoverRoleRadioButton(role);
 
@@ -48,9 +44,9 @@ test.describe("positive", () => {
 
   for (const { role } of roleTestData) {
     test(
-      `should display spinner while request is in progress for each role ${role}`,
-      { tag: ["@multiElements"] },
-      async ({multipleElementsPage}) => {
+      `should show spinner while submit request is in progress (${role})`,
+      { tag: ["@multiElements", "@regression"] },
+      async ({ multipleElementsPage }) => {
         // const multipleElementsPage = new MultipleElementsPage(page);
 
         await multipleElementsPage.SelectRole.clickRoleRadioButton("tester");
@@ -65,15 +61,14 @@ test.describe("positive", () => {
 });
 
 test.describe("negative", () => {
-  
-  test.beforeEach(async ({multipleElementsPage}) => {
+  test.beforeEach(async ({ multipleElementsPage }) => {
     await multipleElementsPage.open();
   });
 
   test(
-    `should submit-button be disabled before a role is selected`,
-    { tag: ["@multiElements"] },
-    async ({multipleElementsPage}) => {
+    `should keep Submit button disabled when no role is selected`,
+    { tag: ["@multiElements", "@regression"] },
+    async ({ multipleElementsPage }) => {
       // const multipleElementsPage = new MultipleElementsPage(page);
       await expect(
         multipleElementsPage.SelectRole.getSubmitButton(),
@@ -83,9 +78,9 @@ test.describe("negative", () => {
 
   for (const { role } of roleTestData) {
     test(
-      `should submit-button become disabled after a ${role} is submitted`,
-      { tag: ["@multiElements"] },
-      async ({multipleElementsPage}) => {
+      `should disable Submit button after role is submitted (${role})`,
+      { tag: ["@multiElements", "@regression"] },
+      async ({ multipleElementsPage }) => {
         // const multipleElementsPage = new MultipleElementsPage(page);
         await multipleElementsPage.SelectRole.clickRoleRadioButton(role);
         await multipleElementsPage.SelectRole.clickSubmitButton();
@@ -99,13 +94,14 @@ test.describe("negative", () => {
   }
 
   test.fail(
-    `should handle role change while a previous submission request is still pending`,
-    { tag: ["@multiElements"] },
-    async ({multipleElementsPage}) => {
+    `should show result of the first submission when role is changed`,
+    { tag: ["@multiElements", "@known-issue", "@regression"] },
+    async ({ multipleElementsPage }) => {
       // submitted 2 requests after clicking SubmitButton each time
 
-      // const multipleElementsPage = new MultipleElementsPage(page);
-      await multipleElementsPage.SelectRole.clickRoleRadioButton(roleTestData[0].role);
+      await multipleElementsPage.SelectRole.clickRoleRadioButton(
+        roleTestData[0].role,
+      );
       await multipleElementsPage.SelectRole.clickSubmitButton();
       await multipleElementsPage.SelectRole.clickRoleRadioButton(
         roleTestData[1].role,
@@ -121,9 +117,7 @@ test.describe("negative", () => {
 });
 
 test.describe("network", () => {
-  
-
-  test.beforeEach(async ({multipleElementsPage}) => {
+  test.beforeEach(async ({ multipleElementsPage }) => {
     await multipleElementsPage.open();
   });
 
@@ -131,7 +125,7 @@ test.describe("network", () => {
     test(
       `should send POST request to /internalapi/choose-a-role on submit for each role - ${role}`,
       { tag: ["@multiElements", "@smoke"] },
-      async ({multipleElementsPage}) => {
+      async ({ multipleElementsPage }) => {
         // const multipleElementsPage = new MultipleElementsPage(page);
         await multipleElementsPage.SelectRole.clickRoleRadioButton(role);
         const [response] = await Promise.all([
@@ -148,9 +142,9 @@ test.describe("network", () => {
 
   for (const { role } of roleTestData) {
     test(
-      `should send request payload with correct role and content-type headers for each role - ${role}`,
-      { tag: ["@multiElements"] },
-      async ({multipleElementsPage}) => {
+      `should send JSON body with selected role and "application/json" content-type when role is submitted (${role})`,
+      { tag: ["@multiElements", "@regression"] },
+      async ({ multipleElementsPage }) => {
         // const multipleElementsPage = new MultipleElementsPage(page);
         await multipleElementsPage.SelectRole.clickRoleRadioButton(role);
         const [response] = await Promise.all([
@@ -169,8 +163,8 @@ test.describe("network", () => {
   for (const { role, expectedResponseRoleText } of roleTestData) {
     test(
       `should return response body matching the role shown in the success message - ${role}`,
-      { tag: ["@multiElements"] },
-      async ({multipleElementsPage}) => {
+      { tag: ["@multiElements", "@regression"] },
+      async ({ multipleElementsPage }) => {
         // const multipleElementsPage = new MultipleElementsPage(page);
         await multipleElementsPage.SelectRole.clickRoleRadioButton(role);
         const [response] = await Promise.all([

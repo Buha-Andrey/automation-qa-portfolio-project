@@ -8,8 +8,8 @@ test.describe("positive", () => {
   });
 
   test(
-    `should upload file after clicking "Drag & Drop your file here or click to upload" zone`,
-    { tag: ["@test"] },
+    `should show success message after file is uploaded by clicking the drop zone`,
+    { tag: ["@fileUpload", "@regression"] },
     async ({ fileUploadPage }) => {
       await fileUploadPage.fileUploadComponent.uploadViaFileChooserV_1(
         UploadData.fileName,
@@ -22,8 +22,8 @@ test.describe("positive", () => {
   );
 
   test(
-    `should upload file after dragging a file on to the the "Drag & Drop your file here or click to upload" zone`,
-    { tag: ["@test"] },
+    `should show success message after file is dropped onto the drop zone`,
+    { tag: ["@fileUpload", "@smoke"] },
     async ({ fileUploadPage }) => {
       await fileUploadPage.fileUploadComponent.uploadViaDropV_1();
 
@@ -34,8 +34,8 @@ test.describe("positive", () => {
   );
 
   test(
-    `should upload file after clicking “Choose file” button, filling the form and clicking Upload`,
-    { tag: ["@test"] },
+    `should show upload results after file is chosen with "Choose file", the form is filled and Upload is clicked`,
+    { tag: ["@fileUpload", "@smoke"] },
     async ({ fileUploadPage, fileProcessorPage }) => {
       await fileUploadPage.fileUploadComponent.uploadViaFileChooserV_2(
         UploadData.fileName,
@@ -49,8 +49,8 @@ test.describe("positive", () => {
   );
 
   test(
-    `should upload file using setInputFiles() on “Choose file” button, filling the form and clicking Upload`,
-    { tag: ["@test"] },
+    `should show upload results after file is set in the file input, the form is filled and Upload is clicked`,
+    { tag: ["@fileUpload", "@regression"] },
     async ({ fileUploadPage, fileProcessorPage }) => {
       await fileUploadPage.fileUploadComponent.uploadViaInputV_2(
         UploadData.fileName,
@@ -70,8 +70,8 @@ test.describe("network", () => {
   });
 
   test(
-    `should send request after uploading file via “Choose file” button`,
-    { tag: ["@test"] },
+    `should send POST request after uploading file via “Choose file” button`,
+    { tag: ["@fileUpload", "@smoke"] },
     async ({ fileUploadPage }) => {
       await fileUploadPage.fileUploadComponent.uploadViaFileChooserV_2(
         UploadData.fileName,
@@ -90,8 +90,8 @@ test.describe("network", () => {
   );
 
   test(
-    `should send request after uploading file via "Drag & Drop your file here or click to upload" zone`,
-    { tag: ["@test"] },
+    `should send POST request when file is dropped onto the drop zone`,
+    { tag: ["@fileUpload", "@smoke"] },
     async ({ fileUploadPage }) => {
       const [response] = await Promise.all([
         fileUploadPage.fileUploadComponent.waitForUploadResponse(),

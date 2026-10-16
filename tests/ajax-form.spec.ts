@@ -2,9 +2,6 @@ import { expect } from "@playwright/test";
 import { ajaxCategory } from "../test-data/test-data";
 import { test } from "../fixtures/fixturePages";
 
-// let page: Page;
-// let multipleElementsPage: MultipleElementsPage;
-
 test.describe("positive", () => {
   test.beforeEach(async ({ ajaxFormPage }) => {
     await ajaxFormPage.open();
@@ -12,8 +9,8 @@ test.describe("positive", () => {
 
   for (const { value, category } of ajaxCategory) {
     test(
-      `should select category (${category})`,
-      { tag: ["@test"] },
+      `should select category and show it as selected (${category})`,
+      { tag: ["@ajaxForm", "@regression"] },
       async ({ ajaxFormPage }) => {
         await ajaxFormPage.AjaxForm.selectCategory(value);
         await expect(ajaxFormPage.AjaxForm.getCategory()).toHaveValue(value);
@@ -26,8 +23,8 @@ test.describe("positive", () => {
   for (const { value, category, languages } of ajaxCategory) {
     for (const { languageValue, language } of languages) {
       test(
-        `should select language ${language} for category (${category})`,
-        { tag: ["@test"] },
+        `should select language and show it as selected (${category} -> ${language})`,
+        { tag: ["@ajaxForm", "@regression"] },
         async ({ ajaxFormPage }) => {
           await ajaxFormPage.AjaxForm.selectCategory(value);
           await ajaxFormPage.AjaxForm.waitTillAjaxLoaderIsHidden();
@@ -44,8 +41,8 @@ test.describe("positive", () => {
   }
 
   test(
-    `should display all categories in the expected order`,
-    {},
+    `should list all categories in the expected order`,
+    { tag: ["@ajaxForm", "@regression"] },
     async ({ ajaxFormPage }) => {
       let arrCategory = ajaxCategory.map(({ category }) => category);
       await expect(ajaxFormPage.AjaxForm.getCategoryOptions()).toHaveText(
@@ -56,8 +53,8 @@ test.describe("positive", () => {
 
   for (const { value, category, languages } of ajaxCategory) {
     test(
-      `should display all languages in the expected order for ${category}`,
-      {},
+      `should list all languages in the expected order after selecting category (${category})`,
+      { tag: ["@ajaxForm", "@regression"] },
       async ({ ajaxFormPage }) => {
         await ajaxFormPage.AjaxForm.selectCategory(value);
         await ajaxFormPage.AjaxForm.waitTillAjaxLoaderIsHidden();
@@ -72,8 +69,8 @@ test.describe("positive", () => {
   for (const { value, category, languages } of ajaxCategory) {
     for (const { languageValue, language } of languages) {
       test(
-        `should display correct submitted values according to language ${language} for category (${category})`,
-        { tag: ["@test"] },
+        `should show success message with submitted category and language after form submit (${category} -> ${language})`,
+        { tag: ["@ajaxForm", "@smoke"] },
         async ({ ajaxFormPage }) => {
           await ajaxFormPage.AjaxForm.selectCategory(value);
           await ajaxFormPage.AjaxForm.waitTillAjaxLoaderIsHidden();
@@ -99,8 +96,8 @@ test.describe("positive", () => {
   for (const { value, category, languages } of ajaxCategory) {
     for (const { languageValue, language } of languages) {
       test(
-        `should clear results when ClearResultButton is clicked (${language},${category})`,
-        { tag: ["@test"] },
+        `should hide submit result after Clear button click (${category} -> ${language})`,
+        { tag: ["@ajaxForm", "@regression"] },
         async ({ ajaxFormPage }) => {
           await ajaxFormPage.AjaxForm.selectCategory(value);
           await ajaxFormPage.AjaxForm.waitTillAjaxLoaderIsHidden();
@@ -114,11 +111,10 @@ test.describe("positive", () => {
   }
 
   test.fail(
-    `should keep SubmitButton inactive until AjaxLoader is shown`,
-    { tag: ["@test"] },
+    `should keep Submit button disabled while language list is loading`,
+    { tag: ["@ajaxForm", "@regression", "@known-issue"] },
     async ({ ajaxFormPage }) => {
       await ajaxFormPage.AjaxForm.selectCategory(ajaxCategory[1].value);
-      // await expect(ajaxFormPage.AjaxForm.getAjaxLoader()).toBeHidden();
       await expect(ajaxFormPage.AjaxForm.getButton()).toBeDisabled();
     },
   );
@@ -131,8 +127,8 @@ test.describe("network", () => {
 
   for (const [index, { category }] of ajaxCategory.entries()) {
     test(
-      `should send request when category is changed (${category})`,
-      { tag: ["@test"] },
+      `should request languages from API when category is changed (${category})`,
+      { tag: ["@ajaxForm", "@regression"] },
       async ({ ajaxFormPage }) => {
         const nextIndex = (index + 1) % ajaxCategory.length;
         const nextValue = ajaxCategory[nextIndex].value;
@@ -150,8 +146,8 @@ test.describe("network", () => {
   for (const { value, category, languages } of ajaxCategory) {
     for (const { languageValue, language } of languages) {
       test(
-        `should send submit request when SubmitButton is clicked (${language} of ${category})`,
-        { tag: ["@test"] },
+        `should send POST request with correct category id and language id on submit (${category} -> ${language})`,
+        { tag: ["@ajaxForm", "@smoke"] },
         async ({ ajaxFormPage }) => {
           await ajaxFormPage.AjaxForm.selectCategory(value);
           await ajaxFormPage.AjaxForm.waitTillAjaxLoaderIsHidden();
@@ -170,5 +166,3 @@ test.describe("network", () => {
     }
   }
 });
-
-

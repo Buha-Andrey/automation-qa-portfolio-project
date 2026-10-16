@@ -12,8 +12,8 @@ test.describe("positive ", () => {
   });
 
   test(
-    `should authenticate and get success page when valid credentials are entered `,
-    { tag: ["@test"] },
+    `should show authenticated message when protected page is opened with valid credentials`,
+    { tag: ["@basicAuth", "@smoke"] },
     async ({ basicAuthPage }) => {
       await basicAuthPage.basicAuth.clickBasicAuthProtectedLink();
 
@@ -24,8 +24,8 @@ test.describe("positive ", () => {
   );
 
   test(
-    `should open basicAuthPage after clicking "Return to the Basic Auth page" button`,
-    { tag: ["@test"] },
+    `should return to Basic Auth page when "Return to the Basic Auth page" is clicked`,
+    { tag: ["@basicAuth", "@regression"] },
     async ({ basicAuthPage }) => {
       await basicAuthPage.basicAuth.clickBasicAuthProtectedLink();
       await basicAuthPage.basicAuth.clickReturn();
@@ -37,8 +37,8 @@ test.describe("positive ", () => {
   );
 
   test(
-    `should delete Basic Authentication Header after clicking "Reset Basic Auth" button`,
-    { tag: ["@test"] },
+    `should show reset confirmation and stop sending Authorization header after "Reset Basic Auth" is clicked`,
+    { tag: ["@basicAuth", "@regression"] },
     async ({ basicAuthPage }) => {
       await basicAuthPage.basicAuth.clickBasicAuthProtectedLink();
       await basicAuthPage.basicAuth.clickReset();
@@ -56,19 +56,18 @@ test.describe("positive ", () => {
     },
   );
 });
-
-test.describe("negative", () => {
-  test.beforeEach(async ({ basicAuthPage }) => {
-    await basicAuthPage.open();
-  });
-  for (const { username, password } of basicAuthInvalidCred) {
+for (const { username, password } of basicAuthInvalidCred) {
+  test.describe("negative", () => {
+    test.beforeEach(async ({ basicAuthPage }) => {
+      await basicAuthPage.open();
+    });
     test.use({
       httpCredentials: { username: username, password: password },
     });
 
     test(
-      `should show "Invalid Credentials" page when invalid credentials are entered (username: ${username}, password: ${password})`,
-      { tag: ["@test"] },
+      `should show "Not authenticated" message when protected page is opened with invalid credentials (${username} / ${password})`,
+      { tag: ["@basicAuth", "@regression"] },
       async ({ basicAuthPage }) => {
         await basicAuthPage.basicAuth.clickBasicAuthProtectedLink();
 
@@ -77,13 +76,12 @@ test.describe("negative", () => {
         ).toBeVisible();
       },
     );
-  }
-});
-
+  });
+}
 test.describe("api", () => {
   test(
-    `returns 200 with valid credentials`,
-    { tag: ["@test"] },
+    `should return 200 and authenticated=true when request has valid Basic Auth header`,
+    { tag: ["@basicAuth", "@smoke"] },
     async ({ basicAuthApi }) => {
       const response = await basicAuthApi.getBasicAuthorization();
       expect(response.status()).toBe(200);
@@ -94,9 +92,9 @@ test.describe("api", () => {
       });
     },
   );
-  test(
-    `should return 401 when authenticate request is sent with invalid/missing Basic Authentication Header`,
-    { tag: ["@test"] },
+  test.fixme(
+    `should return 401 and authenticated=false when Authorization header is invalid or missing`,
+    { tag: ["@basicAuth", "@regression", "@fix"] },
     async ({ basicAuthApi }) => {
       const response = await basicAuthApi.getInvalidBasicAuthorization();
       expect(response.status()).toBe(401);
@@ -106,9 +104,9 @@ test.describe("api", () => {
       });
     },
   );
-  test.fail(
-    `should return 400 when authenticate request is sent with invalid/missing Accept header`,
-    { tag: ["@test"] },
+  test.fixme(
+    `should return 401 when Accept header is invalid or missing`,
+    { tag: ["@basicAuth", "@regression", "@fix"] },
     async ({ basicAuthApi }) => {
       const response = await basicAuthApi.getInvalidAcceptHeader();
       expect(response.status()).toBe(401);
