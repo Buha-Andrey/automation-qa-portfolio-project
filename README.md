@@ -28,51 +28,51 @@
 | TC-24 | should return 401 and authenticated=false when Authorization header is invalid or missing | API | Medium | basic-auth.spec.ts | Needs fix (`test.fixme`) |
 | TC-25 | should return 401 when Accept header is invalid or missing | API | Medium | basic-auth.spec.ts | Needs fix (`test.fixme`) |
 |---|---|---|---|---|---|
-| TC-01 | should show initial titles on all squares when page is opened | UI | Medium | drag-and-drop.spec.ts | Automated |
-| TC-02 | should update square titles after dragging yellow square ${yellow} to red square ${red} | UI | High | drag-and-drop.spec.ts | Automated (flaky) |
-| TC-03 | should show "Drop Here" on both red squares when Ctrl is pressed | UI | High | drag-and-drop.spec.ts | Automated |
-| TC-04 | should show "Bwa! Ha! Ha!" on first yellow square when Ctrl+B is pressed | UI | Medium | drag-and-drop.spec.ts | Automated |
-| TC-05 | should show "Let GO!!!" on both red squares when Ctrl+Space is held | UI | Medium | drag-and-drop.spec.ts | Automated |
+| TC-26 | should show initial titles on all squares when page is opened | UI | Medium | drag-and-drop.spec.ts | Automated |
+| TC-27 | should update square titles after dragging yellow square ${yellow} to red square ${red} | UI | High | drag-and-drop.spec.ts | Automated (flaky) |
+| TC-28 | should show "Drop Here" on both red squares when Ctrl is pressed | UI | High | drag-and-drop.spec.ts | Automated |
+| TC-29 | should show "Bwa! Ha! Ha!" on first yellow square when Ctrl+B is pressed | UI | Medium | drag-and-drop.spec.ts | Automated |
+| TC-30 | should show "Let GO!!!" on both red squares when Ctrl+Space is held | UI | Medium | drag-and-drop.spec.ts | Automated |
 |---|---|---|---|---|---|
-| TC-01 | should show YouTube iframe when page is opened | UI | High | external-content.spec.ts | Automated |
-| TC-02 | should show audio iframe when page is opened | UI | High | external-content.spec.ts | Automated |
-| TC-03 | should have expected "src" attribute in YouTube iframe | UI | Medium | external-content.spec.ts | Automated |
-| TC-04 | should have expected "src" attribute in audio iframe | UI | Medium | external-content.spec.ts | Automated |
-| TC-05 | should load expected URL in YouTube iframe | UI | Medium | external-content.spec.ts | Automated |
-| TC-06 | should load expected URL in audio iframe | UI | Medium | external-content.spec.ts | Automated |
+| TC-31 | should show YouTube iframe when page is opened | UI | High | external-content.spec.ts | Automated |
+| TC-32 | should show audio iframe when page is opened | UI | High | external-content.spec.ts | Automated |
+| TC-33 | should have expected "src" attribute in YouTube iframe | UI | Medium | external-content.spec.ts | Automated |
+| TC-34 | should have expected "src" attribute in audio iframe | UI | Medium | external-content.spec.ts | Automated |
+| TC-35 | should load expected URL in YouTube iframe | UI | Medium | external-content.spec.ts | Automated |
+| TC-36 | should load expected URL in audio iframe | UI | Medium | external-content.spec.ts | Automated |
 |---|---|---|---|---|---|
-| TC-01 | should set iframe "src" to the selected website | UI | Medium | external-site.spec.ts | Automated |
-| TC-02 | should load selected website in iframe | UI | High | external-site.spec.ts | Automated |
+| TC-37 | should set iframe "src" to the selected website | UI | Medium | external-site.spec.ts | Automated |
+| TC-38 | should load selected website in iframe | UI | High | external-site.spec.ts | Automated |
 |---|---|---|---|---|---|
-| TC-01 | should show expected text for list item #`${itemID}` (`${item}`) | UI | Medium | iFrame-example.spec.ts | Automated |
-| TC-02 | should show "iFrame" as list title when page is opened | UI | Medium | iFrame-example.spec.ts | Automated |
-| TC-03 | should show total 100 after adding positive amount (100) with Add button | UI | High | iFrame-example.spec.ts | Automated |
-| TC-04 | should show total -100 after adding negative amount (-100) with Add button | UI | Medium | iFrame-example.spec.ts | Automated |
+| TC-39 | should show expected text for list item #`${itemID}` (`${item}`) | UI | Medium | iFrame-example.spec.ts | Automated |
+| TC-40 | should show "iFrame" as list title when page is opened | UI | Medium | iFrame-example.spec.ts | Automated |
+| TC-41 | should show total 100 after adding positive amount (100) with Add button | UI | High | iFrame-example.spec.ts | Automated |
+| TC-42 | should show total -100 after adding negative amount (-100) with Add button | UI | Medium | iFrame-example.spec.ts | Automated |
 |---|---|---|---|---|---|
-| TC-01 | should show success message after file is uploaded by clicking the drop zone | UI | Medium | file-upload.spec.ts | Automated |
-| TC-02 | should show success message after file is dropped onto the drop zone | UI | High | file-upload.spec.ts | Automated |
-| TC-03 | should show upload results after file is chosen with "Choose file", the form is filled and Upload is clicked | UI | High | file-upload.spec.ts | Automated |
-| TC-04 | should show upload results after file is set in the file input, the form is filled and Upload is clicked | UI | Medium | file-upload.spec.ts | Automated |
-| TC-05 | should send POST request after uploading file via "Choose file" button | network | High | file-upload.spec.ts | Automated |
-| TC-06 | should send POST request when file is dropped onto the drop zone |network| High | file-upload.spec.ts | Automated |
+| TC-43 | should show success message after file is uploaded by clicking the drop zone | UI | Medium | file-upload.spec.ts | Automated |
+| TC-44 | should show success message after file is dropped onto the drop zone | UI | High | file-upload.spec.ts | Automated |
+| TC-45 | should show upload results after file is chosen with "Choose file", the form is filled and Upload is clicked | UI | High | file-upload.spec.ts | Automated |
+| TC-46 | should show upload results after file is set in the file input, the form is filled and Upload is clicked | UI | Medium | file-upload.spec.ts | Automated |
+| TC-47 | should send POST request after uploading file via "Choose file" button | network | High | file-upload.spec.ts | Automated |
+| TC-48 | should send POST request when file is dropped onto the drop zone |network| High | file-upload.spec.ts | Automated |
 |---|---|---|---|---|---|
-| TC-01 | should accept valid value in the first field after it loses focus (`${note}`) | UI | Medium | javascript-form.spec.ts | Automated |
-| TC-02 | should accept valid value in the second field after it loses focus (`${note}`) | UI | Medium | javascript-form.spec.ts | Automated |
-| TC-03 | should show success message when form is submitted with valid values (`${note}`) | UI | High | javascript-form.spec.ts | Automated |
-| TC-04 | should submit form with valid values using keyboard only | UI | Medium | javascript-form.spec.ts | Needs fix (`test.fixme`) |
-| TC-05 | should show submitted values in results after form is submitted with valid values (`${note}`) | UI | High | javascript-form.spec.ts | Automated |
-| TC-06 | should show error when invalid value is entered in the first field and it loses focus (`${note}`) | UI | Medium | javascript-form.spec.ts | Known issue (`test.fail`) |
-| TC-07 | should show error when invalid value is entered in the second field and it loses focus (`${note}`) | UI | Medium | javascript-form.spec.ts | Known issue (`test.fail`) |
-| TC-08 | should show error and no success message when form is submitted with invalid first value (`${note}`) | UI | Medium | javascript-form.spec.ts | Known issue (`test.fail`) |
-| TC-09 | should show error and no success message when form is submitted with invalid second value (`${note}`) | UI | Medium | javascript-form.spec.ts | Known issue (`test.fail`) |
-| TC-10 | should show values in request body as entered in fields when form is submitted (`${note}`) | API (network) | High | javascript-form.spec.ts | Automated |
+| TC-49 | should accept valid value in the first field after it loses focus (`${note}`) | UI | Medium | javascript-form.spec.ts | Automated |
+| TC-50 | should accept valid value in the second field after it loses focus (`${note}`) | UI | Medium | javascript-form.spec.ts | Automated |
+| TC-51 | should show success message when form is submitted with valid values (`${note}`) | UI | High | javascript-form.spec.ts | Automated |
+| TC-52 | should submit form with valid values using keyboard only | UI | Medium | javascript-form.spec.ts | Needs fix (`test.fixme`) |
+| TC-53 | should show submitted values in results after form is submitted with valid values (`${note}`) | UI | High | javascript-form.spec.ts | Automated |
+| TC-54 | should show error when invalid value is entered in the first field and it loses focus (`${note}`) | UI | Medium | javascript-form.spec.ts | Known issue (`test.fail`) |
+| TC-55 | should show error when invalid value is entered in the second field and it loses focus (`${note}`) | UI | Medium | javascript-form.spec.ts | Known issue (`test.fail`) |
+| TC-56 | should show error and no success message when form is submitted with invalid first value (`${note}`) | UI | Medium | javascript-form.spec.ts | Known issue (`test.fail`) |
+| TC-57 | should show error and no success message when form is submitted with invalid second value (`${note}`) | UI | Medium | javascript-form.spec.ts | Known issue (`test.fail`) |
+| TC-58 | should show values in request body as entered in fields when form is submitted (`${note}`) | API (network) | High | javascript-form.spec.ts | Automated |
 |---|---|---|---|---|---|
-| TC-01 | should show success message and hide spinner after Submit with selected role (`${role}`) | UI | High | multiple-elements.spec.ts | Automated |
-| TC-02 | should show role description when hovering over role button (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
-| TC-03 | should show spinner while submit request is in progress (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
-| TC-04 | should keep Submit button disabled when no role is selected | UI | Medium | multiple-elements.spec.ts | Automated |
-| TC-05 | should disable Submit button after role is submitted (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
-| TC-06 | should show result of the first submission when role is changed | UI | Medium | multiple-elements.spec.ts | Known issue (`test.fail`) |
-| TC-07 | should send POST request to /internalapi/choose-a-role on submit for each role - `${role}` | network | High | multiple-elements.spec.ts | Automated |
-| TC-08 | should send JSON body with selected role and "application/json" content-type when role is submitted (`${role}`) | network | Medium | multiple-elements.spec.ts | Automated |
-| TC-09 | should return response body matching the role shown in the success message - `${role}` | network | Medium | multiple-elements.spec.ts | Automated |
+| TC-59 | should show success message and hide spinner after Submit with selected role (`${role}`) | UI | High | multiple-elements.spec.ts | Automated |
+| TC-60 | should show role description when hovering over role button (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
+| TC-61 | should show spinner while submit request is in progress (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
+| TC-62 | should keep Submit button disabled when no role is selected | UI | Medium | multiple-elements.spec.ts | Automated |
+| TC-63 | should disable Submit button after role is submitted (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
+| TC-64 | should show result of the first submission when role is changed | UI | Medium | multiple-elements.spec.ts | Known issue (`test.fail`) |
+| TC-65 | should send POST request to /internalapi/choose-a-role on submit for each role - `${role}` | network | High | multiple-elements.spec.ts | Automated |
+| TC-66 | should send JSON body with selected role and "application/json" content-type when role is submitted (`${role}`) | network | Medium | multiple-elements.spec.ts | Automated |
+| TC-67 | should return response body matching the role shown in the success message - `${role}` | network | Medium | multiple-elements.spec.ts | Automated |
