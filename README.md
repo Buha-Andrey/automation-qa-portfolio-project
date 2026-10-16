@@ -40,3 +40,6 @@
 | TC-04 | should have expected "src" attribute in audio iframe | UI | Medium | external-content.spec.ts | Automated |
 | TC-05 | should load expected URL in YouTube iframe | UI | Medium | external-content.spec.ts | Automated |
 | TC-06 | should load expected URL in audio iframe | UI | Medium | external-content.spec.ts | Automated |
+|---|---|---|---|---|---|
+| TC-01 | should set iframe "src" to the selected website | UI | Medium | external-site.spec.ts | Automated |
+| TC-02 | should load selected website in iframe | UI | High | external-site.spec.ts | Automated |
