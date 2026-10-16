@@ -19,7 +19,7 @@ export class ExternalSitePage {
   }
 
   async selectWebsite(website: string) {
-    this.getWebsite().selectOption(website);
+   await this.getWebsite().selectOption(website);
   }
 
   async waitForIFrameResponse(website: string) {
