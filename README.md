@@ -27,3 +27,16 @@
 | TC-23 | should return 200 and authenticated=true when request has valid Basic Auth header | API | High | basic-auth.spec.ts | Automated |
 | TC-24 | should return 401 and authenticated=false when Authorization header is invalid or missing | API | Medium | basic-auth.spec.ts | Needs fix (`test.fixme`) |
 | TC-25 | should return 401 when Accept header is invalid or missing | API | Medium | basic-auth.spec.ts | Needs fix (`test.fixme`) |
+|---|---|---|---|---|---|
+| TC-01 | should show initial titles on all squares when page is opened | UI | Medium | drag-and-drop.spec.ts | Automated |
+| TC-02 | should update square titles after dragging yellow square ${yellow} to red square ${red} | UI | High | drag-and-drop.spec.ts | Automated (flaky) |
+| TC-03 | should show "Drop Here" on both red squares when Ctrl is pressed | UI | High | drag-and-drop.spec.ts | Automated |
+| TC-04 | should show "Bwa! Ha! Ha!" on first yellow square when Ctrl+B is pressed | UI | Medium | drag-and-drop.spec.ts | Automated |
+| TC-05 | should show "Let GO!!!" on both red squares when Ctrl+Space is held | UI | Medium | drag-and-drop.spec.ts | Automated |
+|---|---|---|---|---|---|
+| TC-01 | should show YouTube iframe when page is opened | UI | High | external-content.spec.ts | Automated |
+| TC-02 | should show audio iframe when page is opened | UI | High | external-content.spec.ts | Automated |
+| TC-03 | should have expected "src" attribute in YouTube iframe | UI | Medium | external-content.spec.ts | Automated |
+| TC-04 | should have expected "src" attribute in audio iframe | UI | Medium | external-content.spec.ts | Automated |
+| TC-05 | should load expected URL in YouTube iframe | UI | Medium | external-content.spec.ts | Automated |
+| TC-06 | should load expected URL in audio iframe | UI | Medium | external-content.spec.ts | Automated |
