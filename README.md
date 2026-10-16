@@ -66,3 +66,13 @@
 | TC-08 | should show error and no success message when form is submitted with invalid first value (`${note}`) | UI | Medium | javascriptForm.spec.ts | Known issue (`test.fail`) |
 | TC-09 | should show error and no success message when form is submitted with invalid second value (`${note}`) | UI | Medium | javascriptForm.spec.ts | Known issue (`test.fail`) |
 | TC-10 | should show values in request body as entered in fields when form is submitted (`${note}`) | API (network) | High | javascriptForm.spec.ts | Automated |
+|---|---|---|---|---|---|
+| TC-01 | should show success message and hide spinner after Submit with selected role (`${role}`) | UI | High | multiple-elements.spec.ts | Automated |
+| TC-02 | should show role description when hovering over role button (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
+| TC-03 | should show spinner while submit request is in progress (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
+| TC-04 | should keep Submit button disabled when no role is selected | UI | Medium | multiple-elements.spec.ts | Automated |
+| TC-05 | should disable Submit button after role is submitted (`${role}`) | UI | Medium | multiple-elements.spec.ts | Automated |
+| TC-06 | should show result of the first submission when role is changed | UI | Medium | multiple-elements.spec.ts | Known issue (`test.fail`) |
+| TC-07 | should send POST request to /internalapi/choose-a-role on submit for each role - `${role}` | API (network) | High | multiple-elements.spec.ts | Automated |
+| TC-08 | should send JSON body with selected role and "application/json" content-type when role is submitted (`${role}`) | API (network) | Medium | multiple-elements.spec.ts | Automated |
+| TC-09 | should return response body matching the role shown in the success message - `${role}` | API (network) | Medium | multiple-elements.spec.ts | Automated |
