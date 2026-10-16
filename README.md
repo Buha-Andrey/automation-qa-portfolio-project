@@ -19,3 +19,11 @@
 | TC-16 | should show success message after JS prompt is dismissed | UI | Medium | alerts-javascript.spec.ts | Automated |
 | TC-17 | should show entered text and success message after JS prompt is accepted with input (`${thePrompt}`) | UI | High | alerts-javascript.spec.ts | Automated |
 | TC-18 | should show HTML entered in JS prompt as plain text (no HTML rendering) | UI | Medium | alerts-javascript.spec.ts | Known issue (`test.fail`) |
+|---|---|---|---|---|---|
+| TC-19 | should show authenticated message when protected page is opened with valid credentials | UI | High | basic-auth.spec.ts | Automated |
+| TC-20 | should return to Basic Auth page when "Return to the Basic Auth page" is clicked | UI | Medium | basic-auth.spec.ts | Automated |
+| TC-21 | should show reset confirmation and stop sending Authorization header after "Reset Basic Auth" is clicked | UI | Medium | basic-auth.spec.ts | Automated |
+| TC-22 | should show "Not authenticated" message when protected page is opened with invalid credentials (`${username} / ${password}`) | UI | Medium | basic-auth.spec.ts | Automated |
+| TC-23 | should return 200 and authenticated=true when request has valid Basic Auth header | API | High | basic-auth.spec.ts | Automated |
+| TC-24 | should return 401 and authenticated=false when Authorization header is invalid or missing | API | Medium | basic-auth.spec.ts | Needs fix (`test.fixme`) |
+| TC-25 | should return 401 when Accept header is invalid or missing | API | Medium | basic-auth.spec.ts | Needs fix (`test.fixme`) |
