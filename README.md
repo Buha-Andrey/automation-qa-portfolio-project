@@ -43,3 +43,8 @@
 |---|---|---|---|---|---|
 | TC-01 | should set iframe "src" to the selected website | UI | Medium | external-site.spec.ts | Automated |
 | TC-02 | should load selected website in iframe | UI | High | external-site.spec.ts | Automated |
+|---|---|---|---|---|---|
+| TC-01 | should show expected text for list item #`${itemID}` (`${item}`) | UI | Medium | iFrame-example.spec.ts | Automated |
+| TC-02 | should show "iFrame" as list title when page is opened | UI | Medium | iFrame-example.spec.ts | Automated |
+| TC-03 | should show total 100 after adding positive amount (100) with Add button | UI | High | iFrame-example.spec.ts | Automated |
+| TC-04 | should show total -100 after adding negative amount (-100) with Add button | UI | Medium | iFrame-example.spec.ts | Automated |
