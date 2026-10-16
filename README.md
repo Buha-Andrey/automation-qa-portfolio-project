@@ -55,3 +55,14 @@
 | TC-04 | should show upload results after file is set in the file input, the form is filled and Upload is clicked | UI | Medium | file-upload.spec.ts | Automated |
 | TC-05 | should send POST request after uploading file via "Choose file" button | network | High | file-upload.spec.ts | Automated |
 | TC-06 | should send POST request when file is dropped onto the drop zone |network| High | file-upload.spec.ts | Automated |
+|---|---|---|---|---|---|
+| TC-01 | should accept valid value in the first field after it loses focus (`${note}`) | UI | Medium | javascriptForm.spec.ts | Automated |
+| TC-02 | should accept valid value in the second field after it loses focus (`${note}`) | UI | Medium | javascriptForm.spec.ts | Automated |
+| TC-03 | should show success message when form is submitted with valid values (`${note}`) | UI | High | javascriptForm.spec.ts | Automated |
+| TC-04 | should submit form with valid values using keyboard only | UI | Medium | javascriptForm.spec.ts | Needs fix (`test.fixme`) |
+| TC-05 | should show submitted values in results after form is submitted with valid values (`${note}`) | UI | High | javascriptForm.spec.ts | Automated |
+| TC-06 | should show error when invalid value is entered in the first field and it loses focus (`${note}`) | UI | Medium | javascriptForm.spec.ts | Known issue (`test.fail`) |
+| TC-07 | should show error when invalid value is entered in the second field and it loses focus (`${note}`) | UI | Medium | javascriptForm.spec.ts | Known issue (`test.fail`) |
+| TC-08 | should show error and no success message when form is submitted with invalid first value (`${note}`) | UI | Medium | javascriptForm.spec.ts | Known issue (`test.fail`) |
+| TC-09 | should show error and no success message when form is submitted with invalid second value (`${note}`) | UI | Medium | javascriptForm.spec.ts | Known issue (`test.fail`) |
+| TC-10 | should show values in request body as entered in fields when form is submitted (`${note}`) | API (network) | High | javascriptForm.spec.ts | Automated |
