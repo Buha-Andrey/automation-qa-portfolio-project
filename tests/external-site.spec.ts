@@ -1,3 +1,5 @@
+/* eslint-disable playwright/no-conditional-expect */
+/* eslint-disable playwright/no-conditional-in-test */
 import { expect } from "@playwright/test";
 import { test } from "../fixtures/fixturePages";
 import { iFrameWebsites } from "../test-data/test-data";

@@ -1,4 +1,4 @@
-import { expect, Frame, Locator } from "@playwright/test";
+import { Frame, Locator } from "@playwright/test";
 
 export class iFrameComponent {
   constructor(readonly iFrame: Locator) {}

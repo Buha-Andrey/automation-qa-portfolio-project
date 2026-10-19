@@ -10,7 +10,7 @@ test.beforeEach(async ({ browser }) => {
   await textBoxPage.open();
 });
 
-test("workflow test: ", async ({}) => {
+test("workflow test:", async ({}) => {
   const textBoxPage = new TextBoxPage(page);
   await textBoxPage.textBox.getFullNameInput().click();
   await textBoxPage.textBox.fillFullNameInput("Test Name");

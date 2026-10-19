@@ -3,12 +3,15 @@ import { iFrameComponent } from "../components/iFrameComponent";
 
 export class ExternalContentPage {
   youtubeFrame: iFrameComponent;
-    audioFrame: iFrameComponent;
+  audioFrame: iFrameComponent;
 
   constructor(private page: Page) {
-    this.youtubeFrame = new iFrameComponent(page.locator('iframe[title="YouTube video player"]'));
-    this.audioFrame = new iFrameComponent(page.locator("div.podcastdotco-wrapper > iframe"));
-
+    this.youtubeFrame = new iFrameComponent(
+      page.locator('iframe[title="YouTube video player"]'),
+    );
+    this.audioFrame = new iFrameComponent(
+      page.locator("div.podcastdotco-wrapper > iframe"),
+    );
   }
 
   async open() {

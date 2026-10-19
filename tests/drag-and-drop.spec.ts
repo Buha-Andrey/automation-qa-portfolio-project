@@ -1,4 +1,4 @@
-import { expect, Page } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { test } from "../fixtures/fixturePages";
 import { dragAndDropData } from "../test-data/test-data";
 

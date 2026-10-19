@@ -44,7 +44,7 @@ test.describe("positive", () => {
     `should list all categories in the expected order`,
     { tag: ["@ajaxForm", "@regression"] },
     async ({ ajaxFormPage }) => {
-      let arrCategory = ajaxCategory.map(({ category }) => category);
+      const arrCategory = ajaxCategory.map(({ category }) => category);
       await expect(ajaxFormPage.AjaxForm.getCategoryOptions()).toHaveText(
         arrCategory,
       );
@@ -58,7 +58,7 @@ test.describe("positive", () => {
       async ({ ajaxFormPage }) => {
         await ajaxFormPage.AjaxForm.selectCategory(value);
         await ajaxFormPage.AjaxForm.waitTillAjaxLoaderIsHidden();
-        let arrLanguage = languages.map(({ language }) => language);
+        const arrLanguage = languages.map(({ language }) => language);
         await expect(ajaxFormPage.AjaxForm.getLanguageOptions()).toHaveText(
           arrLanguage,
         );

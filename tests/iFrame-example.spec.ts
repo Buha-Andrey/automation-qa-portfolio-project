@@ -6,6 +6,7 @@ test.describe("iFrame list", () => {
   test.beforeEach(async ({ iframeExamplesPage }) => {
     await iframeExamplesPage.open();
   });
+
   for (const { item, itemID } of iFrameListData) {
     test(
       `should show expected text for list item #${itemID} (${item})`,
@@ -15,6 +16,7 @@ test.describe("iFrame list", () => {
       },
     );
   }
+
   test(
     `should show "iFrame" as list title when page is opened`,
     { tag: ["@iFrame", "@regression"] },
@@ -28,6 +30,7 @@ test.describe("iFrame Increment Number", () => {
   test.beforeEach(async ({ iframeExamplesPage }) => {
     await iframeExamplesPage.open();
   });
+
   test(
     `should show total 100 after adding positive amount (100) with Add button`,
     { tag: ["@iFrame", "@smoke"] },

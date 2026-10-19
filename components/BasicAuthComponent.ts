@@ -1,4 +1,4 @@
-import { Dialog, Page } from "@playwright/test";
+import {  Page } from "@playwright/test";
 
 export class BasicAuthComponent {
   constructor(private page: Page) {

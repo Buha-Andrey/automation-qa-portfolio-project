@@ -2,7 +2,7 @@ import { expect } from "@playwright/test";
 import { test } from "../fixtures/fixturePages";
 import { basicAuthInvalidCred } from "../test-data/test-data";
 
-test.describe("positive ", () => {
+test.describe("positive", () => {
   test.beforeEach(async ({ basicAuthPage }) => {
     await basicAuthPage.open();
   });
@@ -56,11 +56,13 @@ test.describe("positive ", () => {
     },
   );
 });
+
 for (const { username, password } of basicAuthInvalidCred) {
   test.describe("negative", () => {
     test.beforeEach(async ({ basicAuthPage }) => {
       await basicAuthPage.open();
     });
+
     test.use({
       httpCredentials: { username: username, password: password },
     });
@@ -78,6 +80,7 @@ for (const { username, password } of basicAuthInvalidCred) {
     );
   });
 }
+
 test.describe("api", () => {
   test(
     `should return 200 and authenticated=true when request has valid Basic Auth header`,
@@ -92,6 +95,7 @@ test.describe("api", () => {
       });
     },
   );
+
   test.fixme(
     `should return 401 and authenticated=false when Authorization header is invalid or missing`,
     { tag: ["@basicAuth", "@regression", "@fix"] },
@@ -104,6 +108,7 @@ test.describe("api", () => {
       });
     },
   );
+  
   test.fixme(
     `should return 401 when Accept header is invalid or missing`,
     { tag: ["@basicAuth", "@regression", "@fix"] },
