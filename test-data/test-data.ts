@@ -12,12 +12,14 @@ type BoundaryValue = {
 type InvalidValue = {
   value: string;
   note: string;
+  knownIssue?: boolean;
 };
 
 type FormCase = {
   first: string;
   second: string;
   note: string;
+  knownIssue?: boolean;
 };
 
 type IFrameListData = {
@@ -143,50 +145,50 @@ export const validFormCases: FormCase[] = [
 ];
 
 export const invalidValue: InvalidValue[] = [
-  { value: "30", note: "boundary itself" },
-  { value: "30.1", note: "boundary decimal" },
+  { value: "30", note: "boundary itself", knownIssue: true },
+  { value: "30.1", note: "boundary decimal", knownIssue: true },
   { value: "31", note: "next integer" },
   { value: "100", note: "too large" },
   { value: "999999999999", note: "huge number" },
-  { value: "3e1", note: "exponent = 30" },
-  { value: "1e5", note: "exponent = 100000" },
+  { value: "3e1", note: "exponent = 30", knownIssue: true },
+  { value: "1e5", note: "exponent = 100000", knownIssue: true },
   { value: "", note: "empty" },
   { value: "   ", note: "spaces only" },
   { value: "abc", note: "letters" },
-  { value: "10abc", note: "number + letters" },
+  { value: "10abc", note: "number + letters", knownIssue: true },
   { value: "abc10", note: "letters + number" },
   { value: "!@#$%", note: "special chars" },
-  { value: "1.2.3", note: "multiple dots" },
-  { value: "1,5", note: "comma separator" },
+  { value: "1.2.3", note: "multiple dots", knownIssue: true },
+  { value: "1,5", note: "comma separator", knownIssue: true },
   { value: "+", note: "plus only" },
   { value: "-", note: "minus only" },
   { value: "--5", note: "double minus" },
   { value: "Infinity", note: "JS Infinity" },
   { value: "NaN", note: "JS NaN" },
   { value: "один", note: "word" },
-  { value: "1 0", note: "space inside" },
+  { value: "1 0", note: "space inside", knownIssue: true },
   { value: "A".repeat(10000), note: "very long string" },
 ];
 
 export const invalidValueSecondInput: InvalidValue[] = [
-  { value: "30", note: "boundary" },
+  { value: "30", note: "boundary", knownIssue: true },
   { value: "31", note: "next integer" },
   { value: "100", note: "too large" },
   { value: "999999999999", note: "huge number" },
-  { value: "3e1", note: "exponent = 30" },
-  { value: "1e5", note: "exponent = 100000" },
+  { value: "3e1", note: "exponent = 30", knownIssue: true },
+  { value: "1e5", note: "exponent = 100000", knownIssue: true },
   { value: "", note: "empty" },
 ];
 
 export const invalidFirstValueFormCases: FormCase[] = [
-  { first: "30", second: "10", note: "boundary" },
+  { first: "30", second: "10", note: "boundary", knownIssue: true },
   { first: "100", second: "10", note: "too large" },
   { first: "999999999999", second: "10", note: "huge number" },
-  { first: "1e5", second: "10", note: "exponent = 100000" },
+  { first: "1e5", second: "10", note: "exponent = 100000", knownIssue: true },
   { first: "", second: "10", note: "empty" },
   { first: "   ", second: "10", note: "spaces only" },
   { first: "abc", second: "10", note: "letters" },
-  { first: "10abc", second: "10", note: "number + letters" },
+  { first: "10abc", second: "10", note: "number + letters", knownIssue: true },
   { first: "abc10", second: "10", note: "letters + number" },
   { first: "!@#$%", second: "10", note: "special chars" },
   { first: "+", second: "10", note: "plus only" },
@@ -195,16 +197,16 @@ export const invalidFirstValueFormCases: FormCase[] = [
   { first: "Infinity", second: "10", note: "JS Infinity" },
   { first: "NaN", second: "10", note: "JS NaN" },
   { first: "один", second: "10", note: "word" },
-  { first: "1 0", second: "10", note: "space inside" },
+  { first: "1 0", second: "10", note: "space inside", knownIssue: true },
   { first: "A".repeat(10000), second: "10", note: "very long string" },
 ];
 
 export const invalidSecondInputCases: FormCase[] = [
-  { first: "10", second: "30", note: "boundary" },
+  { first: "10", second: "30", note: "boundary", knownIssue: true },
   { first: "10", second: "100", note: "too large" },
   { first: "10", second: "999999999999", note: "huge number" },
-  { first: "10", second: "3e1", note: "exponent = 30" },
-  { first: "10", second: "1e5", note: "exponent = 100000" },
+  { first: "10", second: "3e1", note: "exponent = 30", knownIssue: true },
+  { first: "10", second: "1e5", note: "exponent = 100000", knownIssue: true },
   { first: "10", second: "", note: "empty" },
 ];
 

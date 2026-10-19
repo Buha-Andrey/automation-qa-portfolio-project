@@ -100,11 +100,22 @@ test.describe("negative", () => {
     await javascriptFormPage.open();
   });
 
-  for (const { value, note } of invalidValue) {
-    test.fail(
+  for (const { value, note, knownIssue } of invalidValue) {
+    test(
       `should show error when invalid value is entered in the first field and it loses focus (${note})`,
-      { tag: ["@javascriptForm", "@known-issue", "@regression"] },
+      {
+        tag: [
+          "@javascriptForm",
+          "@regression",
+          ...(knownIssue ? ["@known-issue"] : []),
+        ],
+      },
       async ({ javascriptFormPage }) => {
+        test.fail(
+          !!knownIssue,
+          "Known issue: does not show validation error for this value",
+        );
+
         await javascriptFormPage.javascriptForm.fillFirstInput(value);
         await javascriptFormPage.javascriptForm.getFirstInput().blur();
         await expect(
@@ -114,11 +125,21 @@ test.describe("negative", () => {
     );
   }
 
-  for (const { value, note } of invalidValueSecondInput) {
-    test.fail(
+  for (const { value, note, knownIssue } of invalidValueSecondInput) {
+    test(
       `should show error when invalid value is entered in the second field and it loses focus (${note})`,
-      { tag: ["@javascriptForm", "@known-issue", "@regression"] },
+      {
+        tag: [
+          "@javascriptForm",
+          "@regression",
+          ...(knownIssue ? ["@known-issue"] : []),
+        ],
+      },
       async ({ javascriptFormPage }) => {
+        test.fail(
+          !!knownIssue,
+          "Known issue: does not show validation error for this value",
+        );
         await javascriptFormPage.javascriptForm.fillSecondInput(value);
         await javascriptFormPage.javascriptForm.getSecondInput().blur();
         await expect(
@@ -131,11 +152,27 @@ test.describe("negative", () => {
     );
   }
 
-  for (const { first, second, note } of invalidFirstValueFormCases) {
-    test.fail(
+  for (const {
+    first,
+    second,
+    note,
+    knownIssue,
+  } of invalidFirstValueFormCases) {
+    test(
       `should show error and no success message when form is submitted with invalid first value (${note})`,
-      { tag: ["@javascriptForm", "@known-issue", "@regression"] },
+      {
+        tag: [
+          "@javascriptForm",
+          "@regression",
+          ...(knownIssue ? ["@known-issue"] : []),
+        ],
+      },
       async ({ javascriptFormPage }) => {
+        test.fail(
+          !!knownIssue,
+          "Known issue: does not show validation error for this value",
+        );
+
         await javascriptFormPage.javascriptForm.fillFirstInput(first);
         await javascriptFormPage.javascriptForm.fillSecondInput(second);
         await javascriptFormPage.javascriptForm.clickSubmitButton();
@@ -150,11 +187,21 @@ test.describe("negative", () => {
     );
   }
 
-  for (const { first, second, note } of invalidSecondInputCases) {
-    test.fail(
+  for (const { first, second, note, knownIssue } of invalidSecondInputCases) {
+    test(
       `should show error and no success message when form is submitted with invalid second value (${note})`,
-      { tag: ["@javascriptForm", "@known-issue", "@regression"] },
+      {
+        tag: [
+          "@javascriptForm",
+          "@regression",
+          ...(knownIssue ? ["@known-issue"] : []),
+        ],
+      },
       async ({ javascriptFormPage }) => {
+        test.fail(
+          !!knownIssue,
+          "Known issue: site does not show validation error for this value",
+        );
         await javascriptFormPage.javascriptForm.fillFirstInput(first);
         await javascriptFormPage.javascriptForm.fillSecondInput(second);
         await javascriptFormPage.javascriptForm.clickSubmitButton();
