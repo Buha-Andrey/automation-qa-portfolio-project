@@ -128,4 +128,6 @@ npx playwright show-report
 
 ## Contacts
 
-
+## Next steps
+- **3 flaky tests**: in some runs locator error appears while the dialog is open. Mitigated with `retries: 1` in CI; root cause analysis is in progress.
+- Create test cases for Cookies and Session Storage sections.
