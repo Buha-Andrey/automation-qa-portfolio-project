@@ -1,0 +1,46 @@
+name: Scheduled tests and report
+
+on:
+  schedule:
+    - cron: "0 5 * * 1" # щопонеділка о 05:00 UTC (08:00 за Києвом)
+  workflow_dispatch: # ручний запуск кнопкою
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Run Playwright tests
+        run: npx playwright test
+      - uses: actions/upload-pages-artifact@v3
+        if: ${{ !cancelled() }}
+        with:
+          path: playwright-report/
+
+  deploy:
+    needs: test
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
