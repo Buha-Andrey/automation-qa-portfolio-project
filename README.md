@@ -1,5 +1,7 @@
 # Automation QA Portfolio Project
 
+**QA Engineer:** Buha Andrii
+
 Automation tests for [testpages.eviltester.com](https://testpages.eviltester.com/pages/) using Playwright + TypeScript.
 
 ![Playwright Tests](https://github.com/Buha-Andrey/automation-qa-portfolio-project/actions/workflows/playwright.yml/badge.svg)    
