@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { iFrameComponent } from "../components/iFrameComponent";
 
-export class iFrameExamplesPage {
+export class IFrameExamplesPage {
   iFrameList: iFrameComponent;
   iFrameNumber: iFrameComponent;
 

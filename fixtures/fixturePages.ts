@@ -5,7 +5,7 @@ import { JavascriptFormPage } from "../pages/JavascriptFormPage";
 import { AlertsJavascriptPage } from "../pages/AlertsJavascriptPage";
 import { ExternalContentPage } from "../pages/ExternalContentPage";
 import { ExternalSitePage } from "../pages/ExternalSitePage";
-import { iFrameExamplesPage } from "../pages/iFrameExamplesPage";
+import { IFrameExamplesPage } from "../pages/IFrameExamplesPage";
 import { FileUploadPage } from "../pages/FileUploadPage";
 import { FileProcessorPage } from "../pages/FileProcessorPage";
 import { DragAndDropPage } from "../pages/DragAndDropPage";
@@ -19,7 +19,7 @@ type Fixtures = {
   alertsJavascriptPage: AlertsJavascriptPage;
   externalContentPage: ExternalContentPage;
   externalSitePage: ExternalSitePage;
-  iframeExamplesPage: iFrameExamplesPage;
+  iframeExamplesPage: IFrameExamplesPage;
   fileUploadPage: FileUploadPage;
   fileProcessorPage: FileProcessorPage;
   dragAndDropPage: DragAndDropPage;
@@ -28,62 +28,62 @@ type Fixtures = {
 };
 
 export const test = base.extend<Fixtures>({
-  multipleElementsPage: ({ page }, use) => {
+  multipleElementsPage: async ({ page }, use) => {
     const multipleElementsPage = new MultipleElementsPage(page);
-    use(multipleElementsPage);
+    await use(multipleElementsPage);
   },
 
-  ajaxFormPage: ({ page }, use) => {
+  ajaxFormPage: async ({ page }, use) => {
     const ajaxFormPage = new AjaxFormPage(page);
-    use(ajaxFormPage);
+    await use(ajaxFormPage);
   },
 
-  javascriptFormPage: ({ page }, use) => {
+  javascriptFormPage: async ({ page }, use) => {
     const javascriptFormPage = new JavascriptFormPage(page);
-    use(javascriptFormPage);
+    await use(javascriptFormPage);
   },
 
-  alertsJavascriptPage: ({ page }, use) => {
+  alertsJavascriptPage: async ({ page }, use) => {
     const alertsJavascriptPage = new AlertsJavascriptPage(page);
-    use(alertsJavascriptPage);
+    await use(alertsJavascriptPage);
   },
 
-  externalContentPage: ({ page }, use) => {
+  externalContentPage: async ({ page }, use) => {
     const externalContentPage = new ExternalContentPage(page);
-    use(externalContentPage);
+    await use(externalContentPage);
   },
 
-  externalSitePage: ({ page }, use) => {
+  externalSitePage: async ({ page }, use) => {
     const externalSitePage = new ExternalSitePage(page);
-    use(externalSitePage);
+    await use(externalSitePage);
   },
 
-  iframeExamplesPage: ({ page }, use) => {
-    const iframeExamplesPage = new iFrameExamplesPage(page);
-    use(iframeExamplesPage);
+  iframeExamplesPage: async ({ page }, use) => {
+    const iframeExamplesPage = new IFrameExamplesPage(page);
+    await use(iframeExamplesPage);
   },
 
-  fileUploadPage: ({ page }, use) => {
+  fileUploadPage: async ({ page }, use) => {
     const fileUploadPage = new FileUploadPage(page);
-    use(fileUploadPage);
+    await use(fileUploadPage);
   },
 
-  fileProcessorPage: ({ page }, use) => {
+  fileProcessorPage: async ({ page }, use) => {
     const fileProcessorPage = new FileProcessorPage(page);
-    use(fileProcessorPage);
+    await use(fileProcessorPage);
   },
 
-  dragAndDropPage: ({ page }, use) => {
+  dragAndDropPage: async ({ page }, use) => {
     const dragAndDropPage = new DragAndDropPage(page);
-    use(dragAndDropPage);
+    await use(dragAndDropPage);
   },
 
-  basicAuthPage: ({ page }, use) => {
+  basicAuthPage: async ({ page }, use) => {
     const basicAuthPage = new BasicAuthPage(page);
-    use(basicAuthPage);
+    await use(basicAuthPage);
   },
-  basicAuthApi: ({ request }, use) => {
+  basicAuthApi: async ({ request }, use) => {
     const basicAuthApi = new BasicAuthApi(request);
-    use(basicAuthApi);
+    await use(basicAuthApi);
   },
 });
