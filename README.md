@@ -97,6 +97,24 @@ There are 67 test cases covering forms, alerts, iframes, file upload, drag and d
 
 ## Found bugs
 
+| ID | Summary | Priority | Related test | Status |
+|---|---|---|---|---|
+| [BUG-01](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/1) | 'Code In It' button is enabled while language list is loading in the Ajax Form
+| Medium | TC-07 | Open |
+| [BUG-02](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/2) | Prompt dialog input is rendered as HTML instead of plain text on the Alert page
+| Medium | TC-18 | Open |
+| [BUG-03](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/3) | No validation error is shown when an invalid value is entered in the first field and it loses focus (JavaScript form)
+| Medium | TC-54 | Open |
+| [BUG-04](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/4) | No validation error is shown for invalid values in the second field (JavaScript form)
+| Medium | TC-55, TC-57 | Open |
+| [BUG-05](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/5) | No validation error is shown when the form is submitted with an invalid value in the first field (JavaScript form)
+| Medium | TC-56 | Open |
+| [BUG-06](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/6) | Success message shows the result of the second submission instead of the first when the role is changed and the form is submitted twice (Multiple elements page)
+| Medium | TC-64 | Open |
+
+Detailed reports: [Issues](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues)
+
+
 ## Approach
 - **Page Object Pattern**: every page has its own class, reusable components have separate component classes. API tests use dedicated API client classes.
 - **Custom fixtures**: Page Objects are injected into tests via `fixturePages.ts`, so there is no manual setup in specs.
