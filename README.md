@@ -1,3 +1,18 @@
+# Automation QA Portfolio Project
+
+**QA Engineer:** Buha Andrii
+
+Automation tests for [testpages.eviltester.com](https://testpages.eviltester.com/pages/) using Playwright + TypeScript.
+
+![Playwright Tests](https://github.com/Buha-Andrey/automation-qa-portfolio-project/actions/workflows/playwright.yml/badge.svg)    
+[📊 Last Report](https://buha-andrey.github.io/automation-qa-portfolio-project/)
+
+## Tech stack
+Playwright · TypeScript · GitHub Actions
+
+## Test cases
+There is 67 test cases for different interaction with a page:  
+<details>
 | idCase | Test Case | Type | Priority | Spec File | Status |
 |---|---|---|---|---|---|
 | TC-01 | should select category and show it as selected | UI | Medium | ajax-form.spec.ts | Automated |
@@ -76,3 +91,43 @@
 | TC-65 | should send POST request to /internalapi/choose-a-role on submit for each role - `${role}` | network | High | multiple-elements.spec.ts | Automated |
 | TC-66 | should send JSON body with selected role and "application/json" content-type when role is submitted (`${role}`) | network | Medium | multiple-elements.spec.ts | Automated |
 | TC-67 | should return response body matching the role shown in the success message - `${role}` | network | Medium | multiple-elements.spec.ts | Automated |
+</details>
+
+## Project structure
+```
+tests/      # spec-files
+pages/      # Page Objects
+api/        # api and their methods
+components/ # every component and their methods 
+fixtures/   # fixtures for pages
+test-data/  # test data
+```
+
+## Approach
+Test cases are built using Page Object Pattern: Every Page has page class, every component has component class. API tests also had thrir own class for methods. Fixtures are added to reduce code duplication: dont create Page Object manually in every test; also every test gets an isolated browser context. All test data is ensured through test-data.ts. 
+To group test cases used test.describe. Each group has test.beforeEach to reduce repetition of the code. Test cases divided into smoke and regression cases using tags.
+
+## Approach
+- **Page Object Pattern**: every page has its own class, reusable components have separate component classes. API tests use dedicated API client classes.
+- **Custom fixtures**: Page Objects are injected into tests via `test.extend`, so there is no manual setup in specs.
+- **Centralized test data**: all data lives in `test-data.ts`, no hardcoded values in specs.
+- **Structure**: tests are grouped with `test.describe`; shared setup is moved to `test.beforeEach`.
+- **Tags**: tests are split into `@smoke` and `@regression`.
+
+## Getting started
+```bash
+npm ci
+npx playwright install --with-deps chromium
+npx playwright test
+npx playwright show-report
+```
+
+## CI/CD
+- On push: lint + tests
+- On schedule: tests + publishing report on GitHub Pages
+
+## Contacts
+
+## Next steps
+- **3 flaky tests**: in some runs locator error appears while the dialog is open. Mitigated with `retries: 1` in CI; root cause analysis is in progress.
+- Create test cases for Cookies and Session Storage sections.
