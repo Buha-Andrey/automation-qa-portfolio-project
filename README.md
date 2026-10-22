@@ -96,6 +96,7 @@ There are 67 test cases covering forms, alerts, iframes, file upload, drag and d
 </details>
 
 ## Found bugs
+Tests that reproduce bugs are marked with `test.fail`, so they appear as passed in the report
 <details>
 <summary>List of bugs </summary>
 | bugNumber | Summary | Priority | Related test | Status |
