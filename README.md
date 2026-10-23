@@ -11,8 +11,10 @@ Automation tests for [testpages.eviltester.com](https://testpages.eviltester.com
 Playwright · TypeScript · GitHub Actions
 
 ## Test cases
-There is 67 test cases for different interaction with a page:  
+There are 67 test cases covering forms, alerts, iframes, file upload, drag and drop, and basic authentication.
 <details>
+<summary>Full list of test cases </summary>
+
 | idCase | Test Case | Type | Priority | Spec File | Status |
 |---|---|---|---|---|---|
 | TC-01 | should select category and show it as selected | UI | Medium | ajax-form.spec.ts | Automated |
@@ -93,6 +95,31 @@ There is 67 test cases for different interaction with a page:
 | TC-67 | should return response body matching the role shown in the success message - `${role}` | network | Medium | multiple-elements.spec.ts | Automated |
 </details>
 
+## Found bugs
+Tests that reproduce bugs are marked with `test.fail`, so they appear as passed in the report
+<details>
+<summary>List of bugs </summary>
+| bugNumber | Summary | Priority | Related test | Status |
+|---|---|---|---|---|
+| [BUG-01](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/1) | 'Code In It' button is enabled while language list is loading in the Ajax Form | Medium | TC-07 | Open |
+| [BUG-02](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/2) | Prompt dialog input is rendered as HTML instead of plain text on the Alert page | Medium | TC-18 | Open |
+| [BUG-03](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/3) | No validation error is shown when an invalid value is entered in the first field and it loses focus (JavaScript form) | Medium | TC-54 | Open |
+| [BUG-04](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/4) | No validation error is shown for invalid values in the second field (JavaScript form) | Medium | TC-55, TC-57 | Open |
+| [BUG-05](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/5) | No validation error is shown when the form is submitted with an invalid value in the first field (JavaScript form) | Medium | TC-56 | Open |
+| [BUG-06](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues/6) | Success message shows the result of the second submission instead of the first when the role is changed and the form is submitted twice (Multiple elements page) | Medium | TC-64 | Open |
+</details>
+
+
+Detailed reports: [Issues](https://github.com/Buha-Andrey/automation-qa-portfolio-project/issues)
+
+
+## Approach
+- **Page Object Pattern**: every page has its own class, reusable components have separate component classes. API tests use dedicated API client classes.
+- **Custom fixtures**: Page Objects are injected into tests via `fixturePages.ts`, so there is no manual setup in specs.
+- **Centralized test data**: all data lives in `test-data.ts`, no hardcoded values in specs.
+- **Structure**: tests are grouped with `test.describe`; shared setup is moved to `test.beforeEach`.
+- **Tags**: tests are split into `@smoke` and `@regression`.
+
 ## Project structure
 ```
 tests/      # spec-files
@@ -102,17 +129,6 @@ components/ # every component and their methods
 fixtures/   # fixtures for pages
 test-data/  # test data
 ```
-
-## Approach
-Test cases are built using Page Object Pattern: Every Page has page class, every component has component class. API tests also had thrir own class for methods. Fixtures are added to reduce code duplication: dont create Page Object manually in every test; also every test gets an isolated browser context. All test data is ensured through test-data.ts. 
-To group test cases used test.describe. Each group has test.beforeEach to reduce repetition of the code. Test cases divided into smoke and regression cases using tags.
-
-## Approach
-- **Page Object Pattern**: every page has its own class, reusable components have separate component classes. API tests use dedicated API client classes.
-- **Custom fixtures**: Page Objects are injected into tests via `test.extend`, so there is no manual setup in specs.
-- **Centralized test data**: all data lives in `test-data.ts`, no hardcoded values in specs.
-- **Structure**: tests are grouped with `test.describe`; shared setup is moved to `test.beforeEach`.
-- **Tags**: tests are split into `@smoke` and `@regression`.
 
 ## Getting started
 ```bash
@@ -126,8 +142,10 @@ npx playwright show-report
 - On push: lint + tests
 - On schedule: tests + publishing report on GitHub Pages
 
-## Contacts
 
 ## Next steps
 - **3 flaky tests**: in some runs locator error appears while the dialog is open. Mitigated with `retries: 1` in CI; root cause analysis is in progress.
 - Create test cases for Cookies and Session Storage sections.
+
+## Contacts
+
